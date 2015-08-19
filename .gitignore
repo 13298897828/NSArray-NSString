@@ -1,26 +1,254 @@
-# Xcode
-#
-build/
-*.pbxuser
-!default.pbxuser
-*.mode1v3
-!default.mode1v3
-*.mode2v3
-!default.mode2v3
-*.perspectivev3
-!default.perspectivev3
-xcuserdata
-*.xccheckout
-*.moved-aside
-DerivedData
-*.hmap
-*.ipa
-*.xcuserstate
+//
+//  main.m
+//  Lesson_8_18_NSString
+//
+//  Created by 张天琦 on 15/8/18.
+//  Copyright (c) 2015年 张天琦. All rights reserved.
+//
 
-# CocoaPods
-#
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
-# http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
-#
-#Pods/
+#import <Foundation/Foundation.h>
+#import "GuanLi.h"
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+      
+#pragma mark 创建字符串对象
+        /*
+        //第一种
+        NSString *str1 = [[NSString alloc]init];
+        str1 = @"zifuchuan";
+        NSLog(@"%@",str1);
+        //第二种,字符串常量创建对象。字符串在常量区
+        NSString * str2 = @"lanou30";
+                NSLog(@"%@",str2);
+        // 第三种,tonguochushihua
+        NSString *str3 = [[NSString alloc]initWithFormat:@"lanou %d class",30];
+        NSLog(@"%@",str3);
+        NSString * str4 = [[NSString alloc]initWithFormat:@"hongniu %.1f",5.5];
+                NSLog(@"%@",str4);
+//        不能直接赋值了,可以接收别的字符串
+//        NSString * str5 = [[NSString alloc]initWithString:str1];
+//        使用 initWithString 创建对象等同于创建常量字符串对象  就是基本啥用都没有
+//        用便利构造器创建对象
+        NSString * str7 =  [NSString stringWithFormat:@"sanPao%d",20];
+//        这个也被弃用了
+//        NSString * str8 = [NSString stringWithString:@"wads"];
+        NSString *s1= @"aad";
+        NSString *s2= [[NSString alloc]init];
+        str2 = @"qqq";
+        NSString * s3= [[NSString alloc]initWithFormat:@"shenmgui %@",@"asa" ];
+        NSString * s4 = [[NSString alloc]initWithString:s1];
+        */
+#pragma mark      求字符串长度,范围
+        /*
+        NSString *s1 = @"oneNightInBeiJing";
+//        获取字符串长度 ,单位不是字节,获取的是字符的个数
+        NSUInteger strlen = [s1 length];
+        
+        NSLog(@"%lu",strlen);
+        
+//        获取一个字符串,在另一个字符串中的范围是一个结构体有两个成员变量, 起始位置location 长度lenth
+        NSRange range = [s1 rangeOfString:@"Ni"];
+        NSLog(@"location  %lu, lenth  %lu",range.location,range.length);
+        
+        */
+#pragma mark 字符串拼接,分割,替换
+        /*
+//        所有操作的实质是:通过执行方法,返回一个新的字符串对象
+        
+        NSString *str = @"zhenshigoule";
+//        字符串拼接
+        NSString *str2 = [str stringByAppendingFormat:@" afeng%d",11];
+        NSLog(@"%@",str2);
+        NSString *str3= [str stringByAppendingString:@"阿峰啊"];
+        NSLog(@"%@",str3);
+        
+        
+//        字符串分割
+        NSString * s1 = @"wasda sd fq wer";
+        NSArray *arr = [s1 componentsSeparatedByString:@"s"];
+        NSLog(@"%@",arr);
+        
+//         获取子串,从第0个开始,不包括Index
+
+        NSString * s2 = [s1 substringToIndex:3];
+        NSLog(@"%@",s2);
+  //        获取子串,从下标的位置开始向后接收,包括下标
+        NSString * s3= [s1 substringFromIndex:4];
+        NSLog(@"%@",s3);
+        
+        
+//        从下标位置开始取 lenth长度的字符
+        NSRange range1 = NSMakeRange(3, 5);
+        NSString * s4 = [s1 substringWithRange:range1];
+        NSLog(@"%@",s4);
+        
+//        字符串替换
+        
+        NSString* s5 =[s1 stringByReplacingOccurrencesOfString:@"sd" withString:@"ww"];
+        NSLog(@"%@",s5);
+      */
+#pragma mark 字符串的比较
+        /*
+        NSString * str = @"北京海淀 清河";
+//        是否有对应前缀
+        BOOL r1 = [str hasPrefix:@"北京"];
+        NSLog(@"%d",r1);
+//        是否有对应后缀
+        BOOL r2 = [str hasSuffix:@"清河 "];
+        NSLog(@"%d",r2);
+        
+        NSString * str1 = @"aqwer";
+        NSString * str2 = @"qw1er";
+//        判断字符串相等
+        BOOL r3 =[str1 isEqualToString:str2];
+        NSLog(@"%d",r3);
+        
+//        比较字符串大小
+//        -1升序  0 相等 1 降序
+        
+        NSInteger r4 =[str1 compare:str2];
+        NSLog(@"%ld",r4);
+        
+        
+        */
+        /*
+        NSString * name = @"dfas.png";
+        NSString * name1 = nil;
+        if ([name hasSuffix:@".png"] == 1) {
+            
+             name1 = [name stringByReplacingOccurrencesOfString:@".png" withString:@".jpg"];
+        }else {
+            
+             name1 =[name stringByAppendingFormat:@".jpg"];
+            
+        }
+        NSLog(@"%@",name1);
+        
+        */
+        /*
+//        模拟用户使用邮箱登陆,用户在输入用户名可以使QQ号或邮箱,但是在进行登录验证时,验证的是QQ邮箱
+        NSString *mail = @"1133efef@qq.com";
+        NSString *password = @"123456";
+        NSString *mail1 = nil;
+        if ([mail hasSuffix:@"@qq.com"] == 1 && [password isEqualToString:@"123456"]&&[mail isEqualToString:@"1133efef@qq.com"]) {
+            mail1 = mail;
+            NSLog(@"%@登陆成功",mail1);
+        }else if([password isEqualToString:@"123456"]&&[mail isEqualToString:@"1133efef@qq.com"]){
+            
+            mail1 = [mail stringByAppendingString:@"@qq.com"];
+            NSLog(@"%@登陆成功",mail1);
+            
+        }else {
+            
+            
+            NSLog(@"账号或密码不正确,请重新输入");
+        }
+        
+        
+        */
+        
+#pragma mark 可变字符串
+        /*
+        NSMutableString *str1 = [[NSMutableString alloc]init];
+        [str1 appendFormat:@"qwerasd"];
+        NSLog(@"%@",str1);
+       [str1 stringByAppendingFormat:@"sd"];
+        NSLog(@"%@",str1);
+        NSRange r = NSMakeRange(1, 2);
+        [str1 deleteCharactersInRange:r];
+        NSLog(@"%@",str1);
+        [str1 insertString:@"qqqq" atIndex:3];
+        NSLog(@"%@",str1);
+        
+//        NSString 是不可变字符串 NSMutableString 是可变字符串 ,NSString是父类
+//        NSString 进行拼接,替换,本质上是得到一个新的字符串
+//        NSMutableString 也可以进行拼接替换等操作,实质上是修改自身
+//        不可变的有返回值,可变的没有返回值,不可变的方法通常以类名开头,可变的不以类名开头
+        
+        */
+        
+#pragma mark 不可变数组
+        NSArray * arr = [[NSArray alloc]initWithObjects:@"wuKong",@"xiaoTang",@"laiGe", nil];
+        NSLog(@"%@",arr);
+        
+        
+//    长度
+        
+        NSLog(@"%ld",[arr count]);
+        
+//        h获取数组首个元素
+        [arr firstObject];
+        NSLog(@"%@",[arr firstObject]);
+        NSLog(@"%@",[arr lastObject]);
+        
+        
+#pragma mark 可变数组
+        
+        
+        
+        /*
+        NSMutableArray *array = [NSMutableArray array];
+        [array addObject:@"sf"];
+        [array addObject:@"laowang"];
+        [array addObject:@"kaoYa"];
+        [array insertObject:@"luoFeng" atIndex:1];
+        NSLog(@"%@",array);
+        [array removeLastObject];
+        [array removeObjectAtIndex:0];
+        NSLog(@"%@",array);
+        [array exchangeObjectAtIndex:1 withObjectAtIndex:0];
+        [array replaceObjectAtIndex:0 withObject:@"laowang"];
+        NSLog(@"%@",array);
+        for (int i = 0; i < [array count]; i ++) {
+            NSLog(@"%@",array[i]);
+        }
+        
+        */
+        
+        
+#pragma mark NSNumber 数值对象
+        /*
+//        把一个整形的数转化为NSnumber对象
+        NSNumber *n1 = [[NSNumber alloc]initWithInt:10086];
+        NSLog(@"%@",n1);
+//        float的
+        NSNumber *n2 = [[NSNumber alloc]initWithFloat:9.2];
+        NSLog(@"%@",n2);
+//     将NSNumber 对象转化为基本数据类型
+        NSLog(@"%d",[n1 intValue]);
+        
+        */
+       
+      GuanLi *book1 = [[GuanLi alloc]initWithName:@"Cherry" price:8.8];
+        
+      GuanLi *book2 = [[GuanLi alloc]initWithName:@"demaxiya" price:12.3];
+        
+      GuanLi *book3 = [[GuanLi alloc]initWithName:@"OC" price:88.7];
+        
+      GuanLi *book4 = [[GuanLi alloc]initWithName:@"ShenMeWanYi" price:0.2];
+       
+        GuanLi *book5 = [[GuanLi alloc]initWithName:@"ShendsdsMeWanYi" price:10.2];
+        NSMutableArray *books = [[NSMutableArray alloc]initWithObjects:book1,book2,book3,book4, nil];
+        NSLog(@"%@",books);
+        [books addObject:book5];
+        NSLog(@"%@",books);
+        [books removeObjectAtIndex:1];
+        for (int i = 0; i < [books count]; i ++) {
+            NSLog(@"%@",books[i]);
+            if ([[books[i] name] isEqualToString:@"shenmewanyi"] == 0) {
+                [books[i] setPrice:88];
+                
+            }
+        }
+        [books addObject:book1];
+//        NSValue 是NSNumber 的父类
+//         NSNumber 实现数值和对象的转换
+        //结构体和对象的转换
+        NSRange range = NSMakeRange(2, 3);
+        NSValue * value = [NSValue valueWithRange:range];
+       
+        
+    }
+    
+    return 0;
+}
